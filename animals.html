@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Slides</title>
+        <style>
+            body{
+            background-image: url('bg2.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+        }
+            .body, html {
+                 overflow: hidden;
+                margin: 0;
+                padding: 0;
+            }
+            .slider {
+                margin: 0 auto;
+                width: 1300px; /* Adjust the width as needed */
+                height: 1000px; /* Set the desired height */
+                max-width: 100%;
+                text-align: center;
+                overflow: hidden;
+                position: absolute;
+                top: 70%;
+                left: 50%;
+                padding-left: 180px;
+                transform: translate(-50%, -50%);
+            }
+
+            .slides {
+                width: 400%;
+                display: flex;
+                transition: transform 0.5s ease;
+            }
+           
+                
+            .slides {
+                width: 400%;
+                display: flex;
+                transition: transform 0.5s ease;
+            }
+            .slide {
+                width: 25%;
+                flex: 0 0 auto;
+                height: 700px;
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end; /* Change this line to align the text to the bottom */
+                font-size: 20px;
+            }
+            .slide:nth-child(1) {
+                border-radius: 15px;
+                background-image: url('dogs.jpg'); /* Replace 'image1.jpg' with the path to your image */
+                 background-size: cover;
+            }
+            
+            .slide:nth-child(2) {
+                border-radius: 15px;
+                background-image: url('deers.jpg'); /* Replace 'image2.jpg' with the path to your image */
+                background-size: cover;
+            }
+            
+            .slide:nth-child(3) {
+                border-radius: 15px;
+                background-image: url('eagle.jpg'); /* Replace 'image3.jpg' with the path to your image */
+                background-size: cover;
+            }
+            
+            .slide:nth-child(4) {
+                border-radius: 15px;
+                background-image: url('horses.jpg'); /* Replace 'image4.jpg' with the path to your image */
+                background-size: cover;
+            }
+            .controls {
+                padding: 80px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
+            .controls img {
+                margin: 50px;
+                width: 100px; 
+                height: 100px;
+                padding: 100px;
+                align-items: center;
+                transition: transform 0.3s ease;/* Adding transition for smooth effect */
+            }
+            .controls img:hover {
+                transform: scale(1.5); /* Increasing the size of the image on hover */
+            }
+            .controls button {
+                background: transparent;
+                border: none;
+                color: #000;
+                font-size: 20px;
+                cursor: pointer;
+            }
+            .nav {
+                padding: 10px;
+                margin-bottom: 150px;
+               
+            }
+            .nav ul {
+                
+                list-style-type: none;
+                padding: 0;
+                position: relative;
+                z-index: 1;
+            
+            }
+            .nav ul li {
+             
+                margin: 30px;
+                border-radius: 7px;
+                padding: 10px;
+                cursor: pointer;
+                
+            }
+            .nav ul li a {
+                
+                color: black; /* Set the text color to black */
+                text-decoration: none; /* Remove underline from links */
+            }
+            .nav ul li a {
+              
+                background-color: #ccc; /* Background color for the anchor tags */
+                padding: 10px; /* Adjust padding as needed */
+                border-radius: 5px; /* Optional: Rounded corners */
+            }
+
+            .nav ul li a:hover {
+                
+                background-color: #f9f4f4; /* Hover background color */
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="slider">
+            <div class="slides">
+                <div class="slide">
+                    <h2 style="margin: 100px; font-size: 40px;color: #000; background:
+                    rgb(252, 252, 252, 0.3); padding: 2px; flex-basis: 100%; border-radius: 7px;">Animals</h2>
+                   
+                </div>
+                <div class="slide">
+                    <h2 style="margin: 100px; font-size: 40px;color: #000; background:
+                    rgb(252, 252, 252, 0.3); padding: 2px; flex-basis: 100%; border-radius: 7px;">Animals</h2>
+                    
+                </div>
+                <div class="slide">
+                    <h2 style="margin: 100px; font-size: 40px;color: #000; background:
+                    rgb(252, 252, 252, 0.3); padding: 2px; flex-basis: 100%; border-radius: 7px;">Animals</h2>
+                    
+                </div>
+                <div class="slide">
+                    <h2 style="margin: 100px; font-size: 40px;color: #000; background:
+                    rgb(252, 252, 252, 0.3); padding: 2px; flex-basis: 100%; border-radius: 7px;">Animals</h2>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <img src="rightarrow.png" onclick="prevSlide()">
+            <img src="leftarrow.png" onclick="nextSlide()">
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="index.html">NATURE</a></li>
+                <li><a href="animals.html">ANIMALS</a></li>
+                <li><a href="galaxies.html">GALAXIES</a></li>
+                <li><a href="sea.html">OCEAN</a></li>
+            </ul>
+        </div>
+        <script>
+            let slideIndex = 0;
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+    
+            function showSlides() {
+                slides.forEach(slide => {
+                    slide.style.display = 'none';
+                });
+                slides[slideIndex].style.display = 'flex';
+            }
+    
+            function prevSlide() {
+                slideIndex--;
+                if (slideIndex < 0) {
+                    slideIndex = totalSlides - 1;
+                }
+                showSlides();
+            }
+    
+            function nextSlide() {
+                slideIndex++;
+                if (slideIndex >= totalSlides) {
+                    slideIndex = 0;
+                }
+                showSlides();
+            }
+    
+            document.addEventListener('DOMContentLoaded', showSlides);
+        </script>
+    </body>
+    </html>
+    
